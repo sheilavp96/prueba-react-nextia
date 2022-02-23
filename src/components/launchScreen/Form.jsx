@@ -1,9 +1,31 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './form.css';
 
 const Form = () => {
+  // const navigate = useNavigate();
+  const [formState, setFormState] = useState({
+    email: '',
+    password: '',
+  });
+
+  const { email, password } = formState;
+
+  useEffect(() => {
+    console.log('no te dispares');
+  }, []);
   const handleLogin = () => {
-    console.log('login');
+    // navigate('/home');
+    console.log('logiiin');
+  };
+
+  const handleInputChange = ({ target }) => {
+    console.log(target.name);
+    console.log(target.value);
+    setFormState({
+      ...formState,
+      [target.name]: target.value,
+    });
   };
   return (
     <div className="form__main-container">
@@ -12,15 +34,19 @@ const Form = () => {
       <input
         type="email"
         placeholder="Email"
-        className="input"
         name="email"
+        // value={email}
+        className="input"
         autoComplete="off"
+        onChange={handleInputChange}
       />
       <input
         type="password"
         placeholder="password"
-        className="input"
         name="password"
+        value={password}
+        className="input"
+        onChange={handleInputChange}
       />
       <button className="btn" type="submit" onClick={handleLogin}>
         Entrar
