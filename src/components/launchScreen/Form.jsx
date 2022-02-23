@@ -44,7 +44,15 @@ const Form = () => {
     e.preventDefault();
   };
   const handleLogin = () => {
-    setOpenModal(true);
+    if (email !== emailUser && passUser !== password) {
+      console.log('no');
+      setOpenModal(true);
+    } else {
+      console.log('entrar');
+      setClassButton('');
+      setButton(!button);
+      navigate('./dashboard');
+    }
     // navigate('./dashboard');
   };
 
@@ -79,9 +87,9 @@ const Form = () => {
         >
           Entrar
         </button>
-        {/* {openModal && <Modal closeModal={setOpenModal} />} */}
+        {openModal && <Modal closeModal={setOpenModal} />}
       </form>
-      <Modal />
+      {/* <Modal /> */}
     </div>
   );
 };

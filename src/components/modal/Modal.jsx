@@ -5,7 +5,9 @@ const Modal = ({ closeModal }) => {
   return (
     <div className="modal-background">
       <div className="modal-container">
-        <h2>email y password invalidos</h2>
+        <p className="modal-text">
+          Email o contraseña invalidos por favor intente nuevamente
+        </p>
         <button className="modal-btn" onClick={() => closeModal(false)}>
           Ok
         </button>
