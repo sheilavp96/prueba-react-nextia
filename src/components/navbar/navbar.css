@@ -24,4 +24,7 @@
   .navbar__logo {
     width: 50%;
   }
+  .navbar__container {
+    flex-direction: row-reverse;
+  }
 }

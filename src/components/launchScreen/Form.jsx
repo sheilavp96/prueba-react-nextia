@@ -4,7 +4,7 @@ import Modal from '../modal/Modal';
 import './form.css';
 
 const Form = () => {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState();
   const [button, setButton] = useState(false);
@@ -27,8 +27,8 @@ const Form = () => {
   //   };
   //   getUser();
   // }, []);
-  const emailUser = 'shey@hotmail.com';
-  const passUser = 123;
+  // const emailUser = 'shey@hotmail.com';
+  // const passUser = 123;
 
   useEffect(() => {
     if (email && password) {
@@ -43,17 +43,29 @@ const Form = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
   };
+
+  let jsonData = {
+    user: {
+      email: email,
+      password: password,
+    },
+  };
   const handleLogin = () => {
-    if (email !== emailUser && passUser !== password) {
-      console.log('no');
-      setOpenModal(true);
-    } else {
-      console.log('entrar');
-      setClassButton('');
-      setButton(!button);
-      navigate('./dashboard');
-    }
-    // navigate('./dashboard');
+    console.log(jsonData);
+    // if (email !== emailUser && passUser !== password) {
+    console.log('no');
+    fetch('https://qa-api.socioinfonavit.com/api/v1/login', {
+      // Enter your IP address here
+      method: 'POST',
+      body: JSON.stringify(jsonData), // body data type must match "Content-Type" header
+    });
+    // setOpenModal(true);
+    // } else {
+    // console.log('entrar');
+    //   setClassButton('');
+    //   setButton(!button);
+    //   navigate('./dashboard');
+    // }
   };
 
   return (
