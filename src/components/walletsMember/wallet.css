@@ -1,0 +1,36 @@
+.wallet__main-container {
+  /* outline: 2px solid red; */
+  margin: auto;
+  padding-top: 20px;
+  width: 90%;
+  height: 350px;
+}
+.wallet__title {
+  margin-bottom: 10px;
+}
+.wallet__slider-container {
+  /* outline: 2px solid blue; */
+  height: 240px;
+}
+.wallet__slider-benevit {
+  /* margin: auto; */
+  outline: 2px solid green;
+  /* background-color: aqua; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+  width: 90% !important;
+}
+.wallet_image {
+  margin: auto;
+  background-color: #6f9acc;
+  height: 50px;
+  width: 100%;
+}
+.slick-next,
+.slick-prev {
+  background-color: #9f9f9f88 !important;
+  border-radius: 65%;
+}

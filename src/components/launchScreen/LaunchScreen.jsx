@@ -1,7 +1,7 @@
 import React from 'react';
 import Wave from '../wave/Wave';
 import Form from './Form';
-import logo from '../../assets/logo.png';
+// import logo from '../../assets/logo.png';
 import './launch.css';
 const LaunchScreen = () => {
   return (

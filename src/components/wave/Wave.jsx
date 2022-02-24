@@ -1,6 +1,6 @@
 import React from 'react';
 import './wave.css';
-import logo from '../../assets/logo.png';
+// import logo from '../../assets/logo.png';
 const Wave = () => {
   return (
     <div className="wave__element-container" style={{ overflow: 'hidden' }}>
