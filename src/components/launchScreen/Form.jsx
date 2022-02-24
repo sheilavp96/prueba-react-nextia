@@ -1,35 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Modal from '../modal/Modal';
+import { useDatosUser } from '../redux/action/userAction';
 import './form.css';
 
 const Form = () => {
-  // const navigate = useNavigate();
+  const { setDatosUser } = useDatosUser();
+  const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState();
   const [button, setButton] = useState(false);
   const [classButton, setClassButton] = useState('');
   const [openModal, setOpenModal] = useState(false);
-
-  // useEffect(() => {
-  //   const getUser = async () => {
-  //     fetch('https://prueba-api.nextia.mx/api/v1/member/wallets')
-  //       .then((res) => {
-  //         console.log(res);
-  //         return res.json();
-  //       })
-  //       .then((data) => {
-  //         console.log(data);
-  //       })
-  //       .catch((err) => {
-  //         console.log('error en la api');
-  //       });
-  //   };
-  //   getUser();
-  // }, []);
-  // const emailUser = 'shey@hotmail.com';
-  // const passUser = 123;
-
+  //l: prueba@nextia.mx
+  // PruebaNextia2021
   useEffect(() => {
     if (email && password) {
       setButton(!button);
@@ -39,39 +23,43 @@ const Form = () => {
       setClassButton('');
     }
   }, [password]);
-
   const handleSubmit = (e) => {
     e.preventDefault();
   };
-
-  let jsonData = {
-    user: {
-      email: email,
-      password: password,
-    },
-  };
   const handleLogin = () => {
-    console.log(jsonData);
-    // if (email !== emailUser && passUser !== password) {
-    console.log('no');
-    fetch('https://qa-api.socioinfonavit.com/api/v1/login', {
-      // Enter your IP address here
+    let url = 'https://qa-api.socioinfonavit.com/api/v1/login';
+    let jsonData = {
+      user: {
+        email: email,
+        password: password,
+      },
+    };
+    const request = {
       method: 'POST',
-      body: JSON.stringify(jsonData), // body data type must match "Content-Type" header
-    });
-    // setOpenModal(true);
-    // } else {
-    // console.log('entrar');
-    //   setClassButton('');
-    //   setButton(!button);
-    //   navigate('./dashboard');
-    // }
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(jsonData),
+    };
+    fetch(url, request)
+      .then(async (response) => {
+        const data = await response.json();
+        console.log(data);
+        setDatosUser(data);
+        if (data?.error) {
+          setOpenModal(true);
+          setClassButton('');
+        } else {
+          sessionStorage.setItem('userSS', JSON.stringify(jsonData));
+          navigate('./dashboard');
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   return (
-    <div>
+    <>
       <form className="form__main-container" onSubmit={handleSubmit}>
-        {/* <form> */}
         <h2>Login</h2>
         <input
           type="email"
@@ -101,8 +89,7 @@ const Form = () => {
         </button>
         {openModal && <Modal closeModal={setOpenModal} />}
       </form>
-      {/* <Modal /> */}
-    </div>
+    </>
   );
 };
 
