@@ -10,7 +10,7 @@ const DashboardScreen = () => {
   // console.log(datosUser);
   // // console.log(datosUser.member.id_socio_infonavit);
   // const [wallet, setWallet] = useState();
-  // // const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(true);
   // const email = datosUser.email;
   // const id = datosUser.id;
   // // let myHeaders = new Headers();
@@ -26,10 +26,10 @@ const DashboardScreen = () => {
   //       method: 'GET',
   //       headers: new Headers({
   //         'Content-Type': 'application/json',
-  //         // Authorization: 'Basic ' + Buffer.from('156099', 'base64'),
-  //         // Authorization: 'Basic ' + Buffer.from(id, 'base64'),
+  //         /Authorization: `Bearer ${token}`,
+  //
   //       }),
-  //       mode: 'cors',
+  //
   //     };
   //     fetch(url, request)
   //       .then(async (response) => {
@@ -49,19 +49,19 @@ const DashboardScreen = () => {
   //   handleLogin();
   // }, []);
 
-  // useEffect(() => {
-  //   setTimeout(() => {
-  //     setLoading(false);
-  //   }, 5000);
-  // }, []);
+  useEffect(() => {
+    setTimeout(() => {
+      setLoading(false);
+    }, 5000);
+  }, []);
   // console.log(datosUser);
   return (
     <div>
       <Navbar />
-      {/* {loading ? <SkeletonComponent /> : <WalletMember />}
       {loading ? <SkeletonComponent /> : <WalletMember />}
-      {loading ? <SkeletonComponent /> : <WalletMember />} */}
-      <SkeletonComponent />
+      {loading ? <SkeletonComponent /> : <WalletMember />}
+      {loading ? <SkeletonComponent /> : <WalletMember />}
+      {/* <SkeletonComponent /> */}
     </div>
   );
   // }

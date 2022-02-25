@@ -9,10 +9,10 @@ import { useSelector } from 'react-redux';
 import './form.css';
 
 const Form = () => {
-  const { setDatosUser } = useDatosUser();
+  // const { setDatosUser } = useDatosUser();
   // const datosUser = useSelector((state) => state.loginReducer);
   const navigate = useNavigate();
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState();
   const [button, setButton] = useState(false);
@@ -28,11 +28,13 @@ const Form = () => {
       setButton(!button);
       setClassButton('');
     }
-  }, [password]);
+  }, [password, email]);
   const handleSubmit = (e) => {
     e.preventDefault();
   };
   const handleLogin = () => {
+    console.log(email, password);
+    console.log('login');
     // console.log(datosUser);
     // dispatch(loginAction.login({ email, password }));
     // console.log(datosUser);
@@ -51,14 +53,17 @@ const Form = () => {
     fetch(url, request)
       .then(async (response) => {
         const data = await response.json();
-        console.log(response.headers);
-        setDatosUser(data);
+        console.log(data);
+        // setDatosUser(data);
         if (data?.error) {
+          console.log('noooooo');
           setOpenModal(true);
           setClassButton('');
         } else {
+          localStorage.setItem('userSS', JSON.stringify(jsonData));
           sessionStorage.setItem('userSS', JSON.stringify(jsonData));
           navigate('./dashboard');
+          console.log('yesss');
         }
       })
       .catch((err) => {

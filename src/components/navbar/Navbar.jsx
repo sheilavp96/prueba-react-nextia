@@ -2,10 +2,13 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import logo from '../../assets/logo.png';
 import open from '../../assets/open.png';
-import Modal from '../modal/Modal';
+import { useDispatch } from 'react-redux';
+// import logOutReducer from '../../_reducers/logOutReducer';
+import logOutAction from '../../_actions/logOutAction';
 import './navbar.css';
 
 const Navbar = () => {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const [openModal, setOpenModal] = useState(false);
   const [openCloseModal, setOpenCloseModal] = useState(false);
@@ -22,6 +25,8 @@ const Navbar = () => {
   };
   const logOutFunction = () => {
     console.log('backkk login');
+    // dispatch(loginAction.login({ email, password }));
+    dispatch(logOutAction.log());
     navigate('/');
   };
   return (
@@ -30,7 +35,9 @@ const Navbar = () => {
         <img src={logo} className="navbar__logo" />
         <div className="navbar__modal">
           <h3 className="navbar__title">Bienvenido</h3>
-          <h3 className="navbar__logout">Cerrar sesión</h3>
+          <button className="navbar__logout" onClick={logOutFunction}>
+            Cerrar sesión
+          </button>
         </div>
         <button className="navbar__open" onClick={openFunction}>
           <img src={open} className="navbar__open-image" />
@@ -50,7 +57,7 @@ const Navbar = () => {
             <p className="modal__session-text">¿Esta seguro de cerrar sesion?</p>
             <div className="buttons__session">
               <button className="btn__ok btn__session" onClick={backFunction}>
-                Ok
+                Regresar
               </button>
               <button className="btn__close btn__session" onClick={logOutFunction}>
                 Cerrar
