@@ -23,11 +23,12 @@
 }
 .wallet_image {
   margin: auto;
-  background-color: #6f9acc;
+  background-color: #9f9f9f;
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
   height: 50px;
   width: 100%;
+  object-fit: contain;
 }
 .slick-next,
 .slick-prev {
@@ -41,6 +42,9 @@
   border-top: none;
   height: 150px;
   padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 .wallet__subtitle {
   font-size: 18px;
@@ -49,4 +53,14 @@
 }
 .wallet__text {
   font-size: 16px;
+}
+.btn-locked {
+  background-color: #c94246;
+  color: white;
+  border-radius: 10px;
+  border: none;
+  padding: 5px 10px;
+}
+.unlocked {
+  justify-content: center;
 }
