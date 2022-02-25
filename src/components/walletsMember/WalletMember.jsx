@@ -40,7 +40,6 @@ const WalletMember = () => {
           return response.json();
         })
         .then((data) => {
-          // console.log(data);
           let objWalet = {};
           for (const cupon of data.locked) {
             if (!objWalet.hasOwnProperty(cupon?.wallet?.name)) {
@@ -48,10 +47,8 @@ const WalletMember = () => {
             }
             objWalet[cupon?.wallet?.name].push(cupon);
           }
-          console.log('el', objWalet);
-          setLocked(objWalet);
 
-          // setLocked(data.locked);
+          setLocked(objWalet);
           setUnLocked(data.unlocked);
           setLoading(true);
         })

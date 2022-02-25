@@ -28,12 +28,10 @@ const Form = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(email, id);
     dispatch(startLogin(email, id));
   };
 
   const handleLogin = () => {
-    console.log(state);
     if (state.authReducer.id) {
       sessionStorage.setItem(
         'userSS',
@@ -53,7 +51,7 @@ const Form = () => {
           },
         })
       );
-      console.log(state.authReducer.id);
+
       navigate('./dashboard');
     } else if (state.authReducer.id === '') {
       console.log('error');

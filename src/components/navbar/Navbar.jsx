@@ -13,19 +13,15 @@ const Navbar = () => {
   const [openModal, setOpenModal] = useState(false);
   const [openCloseModal, setOpenCloseModal] = useState(false);
   const openFunction = () => {
-    console.log('open');
     setOpenModal(!openModal);
   };
   const openCloseFunction = () => {
-    console.log('close');
     setOpenCloseModal(!openCloseModal); //true
   };
   const backFunction = () => {
     setOpenCloseModal(!openCloseModal); //false
   };
   const logOutFunction = () => {
-    console.log('backkk login');
-    // dispatch(loginAction.login({ email, password }));
     dispatch(logOutAction.log());
     navigate('/');
   };

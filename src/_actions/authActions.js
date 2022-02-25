@@ -14,8 +14,6 @@ export const startLogin = (email, id) => {
       },
     })
       .then((res) => {
-        console.log(res);
-        console.log(res.headers.authorization);
         dispatch(authAction(res.data.email, res.headers.authorization));
       })
       .catch(function (error) {
