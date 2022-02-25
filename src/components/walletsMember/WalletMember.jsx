@@ -10,13 +10,9 @@ const WalletMember = () => {
   const [wallets, setWallets] = useState([]);
   const [locked, setLocked] = useState([]);
   const [unLocked, setUnLocked] = useState([]);
-  const [academia, setAcademia] = useState({});
   const [loading, setLoading] = useState(false);
-
   const state = useSelector((state) => state);
-  // console.log(state.authReducer.id);
   const token = state.authReducer.id;
-  // console.log(token);
 
   useEffect(() => {
     const wallet = async () => {
@@ -67,52 +63,7 @@ const WalletMember = () => {
     handleLogin();
     wallet();
   }, []);
-  console.log(wallets);
-  console.log(locked);
-  console.log(unLocked);
 
-  // let arrayWallet = [];
-  // wallets.map((w, key) => {
-  //   console.log(w.display_text);
-  //   arrayWallet.push(w.display_text);
-
-  //   let objWalet = {};
-  //   const arrCupones = (locked) => {
-  //     for (const cupon of locked) {
-  //       if (!objWalet.hasOwnProperty(cupon?.wallet?.name)) {
-  //         objWalet[cupon?.wallet?.name] = [];
-  //       }
-  //       objWalet[cupon?.wallet?.name].push(cupon);
-  //     }
-  //     setAcademia(objWalet);
-  //     return objWalet;
-  //   };
-  //   arrCupones(locked);
-  // });
-
-  // let arrayWallet = [];
-  // wallets.map((w, key) => {
-  //   console.log(w.display_text);
-  //   arrayWallet.push(w.display_text);
-  // });
-
-  // console.log(arrayWallet);
-  // let objWalet = {};
-  // const arrCupones = (locked) => {
-  //   for (const cupon of locked) {
-  //     if (!objWalet.hasOwnProperty(cupon?.wallet?.name)) {
-  //       objWalet[cupon?.wallet?.name] = [];
-  //     }
-  //     objWalet[cupon?.wallet?.name].push(cupon);
-  //   }
-  //   return objWalet;
-  // };
-  // arrCupones(locked);
-
-  console.log(academia);
-
-  // console.log(arrCupones(locked));
-  //peticion get
   let settings = {
     dots: true,
     infinite: false,
@@ -149,18 +100,18 @@ const WalletMember = () => {
   };
 
   return (
-    <>
+    <div className="container">
       <div className="wallet__main-container">
-        <h1 className="wallet__title">Mis benevits</h1>
+        <h1 className="wallet__title mis_benevits">Mis benevits</h1>
         <Slider {...settings} className="wallet__slider-container">
           {wallets.map((e, key) => {
             return (
-              <div className="wallet__main-container" key={e?.id}>
+              <div className="wallet__element-container" key={e?.id}>
                 <div className="wallet__slider-benevit">
                   <div className="wallet_image" />
-                  <div className="wallet__container-text">
+                  <div className="wallet__container-text unlocked">
                     <p className="wallet__subtitle">{e?.display_text}</p>
-                    <p className="wallet__text">
+                    <p className="wallet__text ">
                       There are many variations of passages of Lorem Ipsum available
                       or randomised words which don't look even .
                     </p>
@@ -181,7 +132,10 @@ const WalletMember = () => {
                 return (
                   <div className="wallet__main-container" key={e.id}>
                     <div className="wallet__slider-benevit">
-                      <img src={e.vector_full_path} className="wallet_image" />
+                      <img
+                        src={e.ally.mini_logo_full_path}
+                        className="wallet_image"
+                      />
                       <div className="wallet__container-text unlocked">
                         <p className="wallet__subtitle">{e?.description}</p>
                         <p className="wallet__text">{e.title}</p>
@@ -203,7 +157,9 @@ const WalletMember = () => {
                       <img src={e?.vector_full_path} className="wallet_image" />
                       <div className="wallet__container-text">
                         <p className="wallet__text">{e?.title}</p>
-                        <button className="btn-locked">Lo quiero</button>
+                        <button className="btn-locked btn-session">
+                          Lo quiero
+                        </button>
                       </div>
                     </div>
                   </div>
@@ -307,7 +263,7 @@ const WalletMember = () => {
           </div> */}
         </>
       )}
-    </>
+    </div>
   );
 };
 

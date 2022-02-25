@@ -22,7 +22,6 @@ const Form = () => {
       setButton(!button);
       setClassButton('btn-disable');
     } else {
-      // setButton(!button);
       setClassButton('');
     }
   }, [id, email]);
@@ -58,8 +57,6 @@ const Form = () => {
       navigate('./dashboard');
     } else if (state.authReducer.id === '') {
       console.log('error');
-      // setButton(!button);
-      // setOpenModal(true);
     }
   };
 

@@ -1,19 +1,31 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.mis_benevits {
+  margin-top: 10px;
+}
+
 .wallet__main-container {
-  /* outline: 2px solid red; */
   margin: auto;
-  padding-top: 20px;
+  margin-top: 20px;
   width: 90%;
   height: 350px;
+  margin-bottom: 20px;
 }
+
 .wallet__title {
-  margin-bottom: 10px;
+  padding-top: 20px;
+  padding-bottom: 20px;
   color: #c94246;
 }
 .wallet__slider-container {
-  /* outline: 2px solid blue; */
   height: 240px;
 }
 .wallet__slider-benevit {
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px,
+    rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -38,18 +50,20 @@
 .wallet__container-text {
   border-bottom-left-radius: 8px;
   border-bottom-right-radius: 8px;
-  border: 1px solid #9f9f9f;
+  border: 1px solid #c2c2c2bb;
   border-top: none;
   height: 150px;
   padding: 10px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  width: 100%;
 }
 .wallet__subtitle {
   font-size: 18px;
   margin-bottom: 10px;
-  font-weight: 600;
+  font-weight: 700;
+  color: #c94246;
 }
 .wallet__text {
   font-size: 16px;
@@ -63,4 +77,41 @@
 }
 .unlocked {
   justify-content: center;
+}
+
+.modal__session-container {
+  margin: auto;
+  position: absolute;
+  z-index: 2 !important;
+  width: 40%;
+  top: 200px;
+  left: 25%;
+  height: 90px;
+}
+.modal__session {
+  /* outline: 2px solid red; */
+  background-color: white;
+  border: 0.5px solid rgb(211, 211, 211);
+  display: inline-block;
+  /* position: absolute; */
+
+  /* z-index: 2 !important; */
+  width: 100%;
+}
+.modal__session-text {
+  padding: 10px;
+  text-align: center;
+}
+.buttons__session {
+  background-color: #9f9f9f;
+
+  display: flex;
+}
+.btn__session {
+  width: 100%;
+  border: none;
+  background-color: none;
+}
+.btn__ok {
+  border-right: 0.5px solid rgb(211, 211, 211);
 }

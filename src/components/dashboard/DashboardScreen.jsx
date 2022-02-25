@@ -46,10 +46,9 @@ const DashboardScreen = () => {
   return (
     <div>
       <Navbar />
-      {/* {loading ? <SkeletonComponent /> : <WalletMember />} */}
-      {/* {loading ? <SkeletonComponent /> : <WalletMember />}
-      {loading ? <SkeletonComponent /> : <WalletMember />} */}
-      <WalletMember />
+      {loading ? <SkeletonComponent /> : <WalletMember />}
+      {loading && <SkeletonComponent />}
+      {loading && <SkeletonComponent />}
     </div>
   );
   // }
