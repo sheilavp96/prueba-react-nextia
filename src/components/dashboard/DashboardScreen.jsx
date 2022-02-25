@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import Navbar from '../navbar/Navbar';
 import WalletMember from '../walletsMember/WalletMember';
-import { Buffer } from 'buffer';
 import SkeletonComponent from '../skeleton.jsx/SkeletonComponent';
 
 const DashboardScreen = () => {

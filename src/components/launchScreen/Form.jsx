@@ -1,74 +1,66 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Modal from '../modal/Modal';
-import { useDatosUser } from '../redux/action/userAction';
-// import loginAction from '../../_actions/loginAction';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
-
 import './form.css';
+import { startLogin } from '../../_actions/authActions';
 
 const Form = () => {
-  // const { setDatosUser } = useDatosUser();
-  // const datosUser = useSelector((state) => state.loginReducer);
+  const state = useSelector((state) => state);
   const navigate = useNavigate();
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
   const [email, setEmail] = useState('');
-  const [password, setPassword] = useState();
+  const [id, setID] = useState();
   const [button, setButton] = useState(false);
   const [classButton, setClassButton] = useState('');
-  const [openModal, setOpenModal] = useState(true);
+  const [openModal, setOpenModal] = useState(false);
   //l: prueba@nextia.mx
   // PruebaNextia2021
   useEffect(() => {
-    if (email && password) {
+    if (email && id) {
       setButton(!button);
       setClassButton('btn-disable');
     } else {
-      setButton(!button);
+      // setButton(!button);
       setClassButton('');
     }
-  }, [password, email]);
+  }, [id, email]);
+
   const handleSubmit = (e) => {
     e.preventDefault();
+    console.log(email, id);
+    dispatch(startLogin(email, id));
   };
+
   const handleLogin = () => {
-    console.log(email, password);
-    console.log('login');
-    // console.log(datosUser);
-    // dispatch(loginAction.login({ email, password }));
-    // console.log(datosUser);
-    let url = 'https://qa-api.socioinfonavit.com/api/v1/login';
-    let jsonData = {
-      user: {
-        email: email,
-        password: password,
-      },
-    };
-    const request = {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(jsonData),
-    };
-    fetch(url, request)
-      .then(async (response) => {
-        const data = await response.json();
-        console.log(data);
-        // setDatosUser(data);
-        if (data?.error) {
-          console.log('noooooo');
-          setOpenModal(true);
-          setClassButton('');
-        } else {
-          localStorage.setItem('userSS', JSON.stringify(jsonData));
-          sessionStorage.setItem('userSS', JSON.stringify(jsonData));
-          navigate('./dashboard');
-          console.log('yesss');
-        }
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    console.log(state);
+    if (state.authReducer.id) {
+      sessionStorage.setItem(
+        'userSS',
+        JSON.stringify({
+          user: {
+            email: state.authReducer.email,
+            password: state.authReducer.id,
+          },
+        })
+      );
+      localStorage.setItem(
+        'userSS',
+        JSON.stringify({
+          user: {
+            email: state.authReducer.email,
+            password: state.authReducer.id,
+          },
+        })
+      );
+      console.log(state.authReducer.id);
+      navigate('./dashboard');
+    } else if (state.authReducer.id === '') {
+      console.log('error');
+      // setButton(!button);
+      // setOpenModal(true);
+    }
   };
 
   return (
@@ -81,17 +73,15 @@ const Form = () => {
           name="email"
           value={email}
           className="input"
-          // autoComplete="off"
           onChange={(e) => setEmail(e.target.value)}
         />
         <input
           type="password"
           placeholder="password"
           name="password"
-          value={password}
+          value={id}
           className="input"
-          // autoComplete="off"
-          onChange={(e) => setPassword(e.target.value)}
+          onChange={(e) => setID(e.target.value)}
         />
         <button
           className={`btn ${classButton}`}
