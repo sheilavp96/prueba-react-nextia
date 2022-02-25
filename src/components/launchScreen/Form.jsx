@@ -57,6 +57,7 @@ const Form = () => {
       navigate('./dashboard');
     } else if (state.authReducer.id === '') {
       console.log('error');
+      setOpenModal(true);
     }
   };
 
