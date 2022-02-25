@@ -17,15 +17,15 @@ const logOutReducer = (state = initialState, action) => {
       fetch(url, request)
         .then(async (res) => {
           const data = await res.json();
-          console.log(data);
+          return {};
         })
         .catch((err) => {
           console.log(err);
         });
 
-      return { ...initialState };
+      return {};
     default:
-      return { ...state };
+      return {};
   }
 };
 
