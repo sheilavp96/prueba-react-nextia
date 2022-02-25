@@ -6,7 +6,9 @@
   padding: 8px 20px;
   color: white;
 }
-
+.navbar__open {
+  display: none;
+}
 .navbar__logo {
   width: 20%;
 }
@@ -15,7 +17,12 @@
   display: flex;
   justify-content: space-between;
 }
-
+.dropDown__container {
+  display: none;
+}
+.modal__session {
+  display: none;
+}
 @media screen and (max-width: 505px) {
   .navbar__title,
   .navbar__logout {
@@ -24,7 +31,78 @@
   .navbar__logo {
     width: 50%;
   }
+  .navbar__open {
+    display: block;
+    width: 15%;
+    height: 50px;
+    background-color: #ec5056;
+    border: none;
+  }
+  .navbar__open-image {
+    width: 100%;
+    margin: auto;
+  }
   .navbar__container {
     flex-direction: row-reverse;
+  }
+  .dropDown__container {
+    display: inline-block;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    /* outline: 2px solid red; */
+    background-color: #ec5056;
+    width: 45%;
+    height: 90%;
+    position: absolute;
+    z-index: 1 !important;
+    padding: 10px;
+    color: white;
+  }
+  .btn-session {
+    background-color: white;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    width: 70%;
+  }
+  .modal__session-container {
+    margin: auto;
+    position: absolute;
+    z-index: 2 !important;
+    width: 40%;
+    top: 200px;
+    left: 25%;
+    /* display: flex;
+    justify-content: center;
+    align-items: center; */
+    height: 90px;
+  }
+  .modal__session {
+    /* outline: 2px solid red; */
+    background-color: white;
+    border: 0.5px solid rgb(211, 211, 211);
+    display: inline-block;
+    /* position: absolute; */
+
+    /* z-index: 2 !important; */
+    width: 100%;
+  }
+  .modal__session-text {
+    padding: 10px;
+    text-align: center;
+  }
+  .buttons__session {
+    background-color: #9f9f9f;
+
+    display: flex;
+  }
+  .btn__session {
+    width: 100%;
+    border: none;
+    background-color: none;
+  }
+  .btn__ok {
+    border-right: 0.5px solid rgb(211, 211, 211);
   }
 }

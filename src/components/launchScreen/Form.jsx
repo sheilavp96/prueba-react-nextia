@@ -2,11 +2,17 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Modal from '../modal/Modal';
 import { useDatosUser } from '../redux/action/userAction';
+// import loginAction from '../../_actions/loginAction';
+import { useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
+
 import './form.css';
 
 const Form = () => {
   const { setDatosUser } = useDatosUser();
+  // const datosUser = useSelector((state) => state.loginReducer);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState();
   const [button, setButton] = useState(false);
@@ -27,6 +33,9 @@ const Form = () => {
     e.preventDefault();
   };
   const handleLogin = () => {
+    // console.log(datosUser);
+    // dispatch(loginAction.login({ email, password }));
+    // console.log(datosUser);
     let url = 'https://qa-api.socioinfonavit.com/api/v1/login';
     let jsonData = {
       user: {
@@ -42,7 +51,7 @@ const Form = () => {
     fetch(url, request)
       .then(async (response) => {
         const data = await response.json();
-        console.log(data);
+        console.log(response.headers);
         setDatosUser(data);
         if (data?.error) {
           setOpenModal(true);
@@ -67,7 +76,7 @@ const Form = () => {
           name="email"
           value={email}
           className="input"
-          autoComplete="off"
+          // autoComplete="off"
           onChange={(e) => setEmail(e.target.value)}
         />
         <input
@@ -76,7 +85,7 @@ const Form = () => {
           name="password"
           value={password}
           className="input"
-          autoComplete="off"
+          // autoComplete="off"
           onChange={(e) => setPassword(e.target.value)}
         />
         <button

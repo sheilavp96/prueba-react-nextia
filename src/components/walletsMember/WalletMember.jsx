@@ -3,8 +3,11 @@ import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import './wallet.css';
+import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
+import 'react-loading-skeleton/dist/skeleton.css';
 const WalletMember = () => {
   const [wallets, setWallets] = useState([]);
+
   useEffect(() => {
     const wallet = async () => {
       fetch('https://qa-api.socioinfonavit.com/api/v1/member/wallets')
@@ -14,6 +17,7 @@ const WalletMember = () => {
           console.log(err);
         });
     };
+
     wallet();
   }, []);
   console.log(wallets);
@@ -52,6 +56,7 @@ const WalletMember = () => {
       },
     ],
   };
+
   return (
     <div className="wallet__main-container">
       <h1 className="wallet__title">Tus cuponeras...</h1>
@@ -59,7 +64,7 @@ const WalletMember = () => {
         {wallets.map((w, key) => {
           return (
             <div className="wallet__slider-benevit" key={w?.id}>
-              <img src={w.icon} className="wallet_image" />
+              <img src={w.avatar} className="wallet_image" />
               <h2>{w.display_text}</h2>
             </div>
           );
