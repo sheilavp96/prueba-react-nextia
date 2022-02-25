@@ -3,8 +3,9 @@ import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import './wallet.css';
-import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
+import image from '../../assets/banner2.png';
+
 const WalletMember = () => {
   const [wallets, setWallets] = useState([]);
 
@@ -64,8 +65,14 @@ const WalletMember = () => {
         {wallets.map((w, key) => {
           return (
             <div className="wallet__slider-benevit" key={w?.id}>
-              <img src={w.avatar} className="wallet_image" />
-              <h2>{w.display_text}</h2>
+              <div className="wallet_image" />
+              <div className="wallet__container-text">
+                <p className="wallet__subtitle">{w.display_text}</p>
+                <p className="wallet__text">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                  eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                </p>
+              </div>
             </div>
           );
         })}

@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Roboto:wght@300;700&display=swap');
+
 .navbar__container {
   background-color: #ec5056;
   display: flex;
@@ -13,9 +15,10 @@
   width: 20%;
 }
 .navbar__modal {
+  /* outline: 2px solid white; */
   width: 50%;
   display: flex;
-  justify-content: space-between;
+  justify-content: end;
 }
 .dropDown__container {
   display: none;
@@ -23,6 +26,21 @@
 .modal__session {
   display: none;
 }
+.navbar__logout {
+  /* outline: 2px solid white; */
+  background-color: #ec5056;
+  border: none;
+  font-size: 20px;
+  color: white;
+  font-weight: 700;
+  padding: 20px;
+  cursor: pointer;
+  border-radius: 8px;
+}
+.navbar__logout:hover {
+  background-color: #a84a4d;
+}
+
 @media screen and (max-width: 505px) {
   .navbar__title,
   .navbar__logout {
@@ -59,12 +77,17 @@
     padding: 10px;
     color: white;
   }
+  .dropDown__text {
+    font-size: 20px;
+  }
   .btn-session {
     background-color: white;
-    border-radius: 10px;
+    border-radius: 12px;
     border: none;
     cursor: pointer;
     width: 70%;
+    font-size: 16px;
+    padding: 8px;
   }
   .modal__session-container {
     margin: auto;

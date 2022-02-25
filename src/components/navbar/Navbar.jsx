@@ -34,7 +34,7 @@ const Navbar = () => {
       <div className="navbar__container">
         <img src={logo} className="navbar__logo" />
         <div className="navbar__modal">
-          <h3 className="navbar__title">Bienvenido</h3>
+          {/* <p className="navbar__title">Bienvenido</p> */}
           <button className="navbar__logout" onClick={logOutFunction}>
             Cerrar sesión
           </button>
@@ -45,7 +45,7 @@ const Navbar = () => {
       </div>
       {openModal && (
         <div className="dropDown__container">
-          <p>Bienvenido</p>
+          <p className="dropDown__text">Bienvenido</p>
           <button onClick={openCloseFunction} className="btn-session">
             Cerrar sesion
           </button>
@@ -57,10 +57,10 @@ const Navbar = () => {
             <p className="modal__session-text">¿Esta seguro de cerrar sesion?</p>
             <div className="buttons__session">
               <button className="btn__ok btn__session" onClick={backFunction}>
-                Regresar
+                Cancelar
               </button>
               <button className="btn__close btn__session" onClick={logOutFunction}>
-                Cerrar
+                Salir
               </button>
             </div>
           </div>

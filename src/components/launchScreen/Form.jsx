@@ -17,7 +17,7 @@ const Form = () => {
   const [password, setPassword] = useState();
   const [button, setButton] = useState(false);
   const [classButton, setClassButton] = useState('');
-  const [openModal, setOpenModal] = useState(false);
+  const [openModal, setOpenModal] = useState(true);
   //l: prueba@nextia.mx
   // PruebaNextia2021
   useEffect(() => {
